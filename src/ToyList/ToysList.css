@@ -1,0 +1,71 @@
+.confirm-bg {
+  position: fixed;
+  display: flex;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  opacity: 0.55;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  background-color: black;
+  width: 250px;
+  top: 20%;
+  left: 20%;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  z-index: 5;
+}
+
+
+.confirmation-text {
+  display: block;
+  color: white;
+  text-align: center;
+  line-height: 2rem;
+  font-size: 1.1rem;
+}
+.delited-item {
+  line-height: 1rem;
+  text-align: left;
+  padding-left: 2rem;
+}
+
+.button-container {
+  display: flex;
+  margin-top: auto;
+  justify-content: space-between;
+}
+
+.confirmation-button {
+  display: inline-flex;
+  background-color: #cc0000;
+  color: white;
+  padding: 0.2rem 0.4rem;
+  border: none;
+  font-size: 1rem;
+}
+
+.cancel-button {
+  background-color: gray;
+  padding: 0.2rem 0.4rem;
+  font-size: 1rem;
+  border: none;
+}
+
+.confirmation-button:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
