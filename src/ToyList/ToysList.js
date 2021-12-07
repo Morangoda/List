@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "reactstrap";
 import { useState } from "react/cjs/react.development";
 import EditRow from "./EditRow";
 import ToyRow from "./ToyRow";
@@ -53,7 +54,9 @@ function ToysList() {
   return (
     <div>
       <h2>Toys List</h2>
-      <button onClick={toggleAdd}>Add</button>
+      <button color="dark" onClick={toggleAdd}>
+        Add
+      </button>
       <table>
         <thead>
           <tr>
