@@ -24,7 +24,6 @@
   z-index: 5;
 }
 
-
 .confirmation-text {
   display: block;
   color: white;
@@ -68,4 +67,8 @@
 .cancel-button:hover {
   background-color: lightgray;
   cursor: pointer;
+}
+
+.btn {
+  min-width: 90px;
 }

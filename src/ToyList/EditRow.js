@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import { Button, Input, FormFeedback, InputGroup, FormGroup } from "reactstrap";
 import { validationShema } from "./ValidationShema";
 
 const COLORS = [
@@ -16,11 +17,7 @@ function EditRow({ initialValue, onSave, onCancel }) {
   const [newValues, setNewValues] = useState(initialValue);
   const [errors, setErrors] = useState({});
 
-  /* const set = (name) => {
-    return ({ target: { value } }) => {
-      setNewValues((oldValues) => ({ ...oldValues, [name]: value }));
-    };
-  };*/
+
 
   const handleChange = useCallback(
     (event) => {
@@ -86,38 +83,86 @@ function EditRow({ initialValue, onSave, onCancel }) {
   return (
     <tr>
       <td>
-        <input
+        <Input
+        className="toy"
+          invalid={!!errors.toyName}
+          valid={!errors.toyName}
+          size="sm"
           name="toyName"
           type="text"
           value={newValues.toyName}
           onChange={handleChange}
         />
-        {errors.toyName && <span>{errors.toyName}</span>}
-      </td>
-      <td>
-        <select name="color" value={newValues.color} onChange={handleChange}  >
-          <option value="">Select color</option>
-          {COLORS.map((c) => (
-            <option key={c}>{c}</option>
-          ))}
-        </select>
-        {errors.color && <span>{errors.color}</span>}
-      </td>
-      <td>
-        <button onClick={increment}>+</button>
-        <input
-          name="number"
-          type="number"
-          value={newValues.number ?? ""}
-          onChange={handleNumberChange}
-        />
-        <button onClick={decrease}>-</button>
-        {errors.number && <span>{errors.number}</span>}
+        <FormFeedback>
+          <span>{errors.toyName}</span>
+        </FormFeedback>
       </td>
       <td>
         <>
-          <button onClick={handleSave}>Save</button>
-          <button onClick={onCancel}>Cancel</button>
+          <Input
+          className="color"
+            invalid={!!errors.color}
+            valid={!errors.color}
+            size="sm"
+            type="select"
+            name="color"
+            value={newValues.color}
+            onChange={handleChange}
+          >
+            <option value="">Select color</option>
+            {COLORS.map((c) => (
+              <option key={c}>{c}</option>
+            ))}
+          </Input>
+          <FormFeedback>
+            <span>{errors.color}</span>
+          </FormFeedback>
+        </>
+      </td>
+      <td>
+        <>
+          <InputGroup size="sm"  className="number">
+            <Button color="dark" className="counter" onClick={increment}>
+              +
+            </Button>
+            <Input
+            
+              invalid={!!errors.number}
+              valid={!errors.number}
+              name="number"
+              type="number"
+              value={newValues.number ?? ""}
+              onChange={handleNumberChange}
+            />
+            <Button color="dark" className="counter" onClick={decrease}>
+              -
+            </Button>
+            <FormFeedback>
+              <span>{errors.number}</span>
+            </FormFeedback>
+          </InputGroup>
+        </>
+      </td>
+      <td>
+        <>
+          <Button
+            color="success"
+            size="sm"
+            className="other"
+            onClick={handleSave}
+            outline
+          >
+            Save
+          </Button>{" "}
+          <Button
+            color="warning"
+            size="sm"
+            className="other"
+            onClick={onCancel}
+            outline
+          >
+            Cancel
+          </Button>
         </>
       </td>
     </tr>

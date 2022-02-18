@@ -1,10 +1,10 @@
 import React from "react";
-import { Button } from "reactstrap";
+import { Button, Table } from "reactstrap";
 import { useState } from "react/cjs/react.development";
 import EditRow from "./EditRow";
 import ToyRow from "./ToyRow";
-import "./ToysList.css";
-import ConfirmDialog from "./ConfirmationDialog";
+import ModalMessage from "./ModalMessage";
+import "./ToyList.css";
 
 const initialValue = {
   toyName: "",
@@ -52,12 +52,12 @@ function ToysList() {
   }
 
   return (
-    <div>
-      <h2>Toys List</h2>
-      <button color="dark" onClick={toggleAdd}>
+    <div className="app">
+      <p class="text-center text-uppercase fs-2 fw-bold">List of toys</p>
+      <Button size="sm" onClick={toggleAdd} className="other mb-2">
         Add
-      </button>
-      <table>
+      </Button>
+      <Table dark size="sm" hover striped>
         <thead>
           <tr>
             <th>Toy Name</th>
@@ -76,7 +76,12 @@ function ToysList() {
           )}
           {items.length === 0 && (
             <tr>
-              <td colSpan={4}>No items on file</td>
+              <td
+                className="text-center text-muted py-3 fst-italic"
+                colSpan={4}
+              >
+                No items on file
+              </td>
             </tr>
           )}
           {items.map((item, index) => {
@@ -90,9 +95,9 @@ function ToysList() {
             );
           })}
         </tbody>
-      </table>
+      </Table>
       {delItem && (
-        <ConfirmDialog
+        <ModalMessage
           item={delItem}
           onCancel={handleCancelConfirmation}
           onRemove={handleRemove}
